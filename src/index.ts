@@ -1,14 +1,16 @@
 import express from "express";
 import cors from "cors";
 import { MongoClient, ServerApiVersion } from "mongodb";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 const port = 3000;
-
+const url = process.env.URL
 app.use(cors());
 app.use(express.json());
 
-const client = new MongoClient("mongodb://mongo:uDiqZdSBBVyVsxOTITEYzAoztICALztq@autorack.proxy.rlwy.net:25058", {
+const client = new MongoClient(url, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
